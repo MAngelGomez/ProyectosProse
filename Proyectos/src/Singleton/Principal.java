@@ -6,6 +6,7 @@ public class Principal {
 		Impresora impresora1= Impresora.getAtributo();
 		
 		System.out.println(impresora1);
+		System.out.println("Fin impresora");
 
 	}
 
