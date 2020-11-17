@@ -1,0 +1,10 @@
+.classpath
+.gitignore
+.metadata
+.project
+.settings
+bin
+copia.png
+listado.txt
+original.png
+src
