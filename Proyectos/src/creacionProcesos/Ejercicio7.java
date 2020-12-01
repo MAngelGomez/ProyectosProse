@@ -8,7 +8,7 @@ public class Ejercicio7 {
 
 		
 		String comandoLinux = "firefox iescristobaldemonroy.es";
-		String comandoWindows = "C:\\Program Files\\Mozilla Firefox\\firefox.exe iescristobaldemonroy.es";
+		String comandoWindows = "C:\\Program Files\\Mozilla Firefox\\firefox.exe ";
 		
 		String comando = comandoWindows;
 		ProcessBuilder pb = new ProcessBuilder(comando);
