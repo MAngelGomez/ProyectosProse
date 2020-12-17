@@ -13,28 +13,35 @@ public class Ejercicio9 {
 
 	public static void main(String[] args) {
 		
+		List<String>comando= new ArrayList<String>();
+		comando.add("CMD");
+		comando.add("/C");
+		comando.add("DIRR");
+		
+		String comandoEje=String.valueOf(comando);
+		ProcessBuilder pb= new ProcessBuilder(comando);
+		File fOut= new File("salida_Ejercicio9.txt");
+		File fError= new File("log_Ejercicio9.txt");
+		
+		pb.redirectOutput(fOut);
+		pb.redirectError(fError);
+		
 		try {
-			//String comandoLinux="ls -help";
-			//String comandoWindows="CMD /C DIR";
-			List<String>lista= new ArrayList<String>();
-			lista.add("ls");
-			lista.add("agua");
-			//String comando= comandoLinux;
-			
-			Process p = null;
-			int status;
-			ProcessBuilder pb=new ProcessBuilder(lista);
-			File fOut=new File("salida_ejercicio9.txt");
-			File fError=new File("logError_ejercicio9.txt");
-			
-			pb.redirectOutput(fOut);
-			pb.redirectError(fError);
-			
 			pb.start();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int status;
+		
+		Runtime rt= Runtime.getRuntime();
+		Process p=null;
+		
+		try {
+			p=rt.exec(comandoEje);
 			
-			InputStream is = p.getInputStream();	
-			
-			status = p.waitFor();
+			status=p.waitFor();
 			
 			if(status==0) {
 				System.out.println("El comando  ha resultado " + status);
@@ -42,16 +49,14 @@ public class Ejercicio9 {
 			else {
 				System.out.println("No existe el archivo o directorio");
 			}
-				
-			
-			
 		} catch (IOException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		
 	}

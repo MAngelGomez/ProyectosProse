@@ -1,10 +1,1 @@
-.classpath
-.gitignore
-.metadata
-.project
-.settings
-bin
-copia.png
-listado.txt
-original.png
-src
+ El volumen de la unidad C no tiene etiqueta. El n£mero de serie del volumen es: 501B-3FE0 Directorio de C:\Users\miguel\git\ProyectosProse\Proyectos24/11/2020  21:01    <DIR>          .24/11/2020  21:01    <DIR>          ..07/10/2020  07:32               396 .classpath28/10/2020  20:32                 6 .gitignore11/11/2020  09:23    <DIR>          .metadata28/10/2020  20:07               385 .project01/12/2020  19:53    <DIR>          .settings02/12/2020  19:58    <DIR>          bin05/11/2020  09:39           180.224 copia.png02/12/2020  20:02                 0 listado.txt24/11/2020  21:00               102 log_err_ejercicio6.txt05/11/2020  09:19           164.367 original.png24/11/2020  21:01               926 salida_comando_CMD _C DIR02/12/2020  19:58    <DIR>          src               8 archivos        346.406 bytes               6 dirs  125.225.947.136 bytes libres

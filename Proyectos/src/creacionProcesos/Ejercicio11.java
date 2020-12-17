@@ -3,29 +3,25 @@ package creacionProcesos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class Ejercicio8 {
+public class Ejercicio11 {
 
 	public static void main(String[] args) {
-		ProcessBuilder pEnv = new ProcessBuilder();
-		Map<String, String> vbles = pEnv.environment();
-		System.out.println(vbles);
-		
 		List<String> lCommand = new ArrayList<String>();
-		lCommand.add("CMD");
-		lCommand.add("/C");
-		lCommand.add("DIRR");
+		lCommand.add("java");
+		lCommand.add("Proyectos.Repaso.Ejercicio10");
 		
 		ProcessBuilder pb = new ProcessBuilder(lCommand);
-		System.out.println(pb.command());
+		
+		String classpath = "/home/profesor/git/PSP/PSP_jesusrodenas/bin";
+				
+		pb.environment().put("CLASSPATH", classpath);
+		pb.inheritIO();
 		
 		try {
 			pb.start();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

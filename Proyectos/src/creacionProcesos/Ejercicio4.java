@@ -13,6 +13,7 @@ public class Ejercicio4 {
 			p = rt.exec(comando);
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		
 		int status;

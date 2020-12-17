@@ -1,14 +1,14 @@
-package creacionProcesos;
+package Repaso;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Ejercicio2 {
+public class Ejercicio3 {
 
 	public static void main(String[] args) {
 
@@ -23,16 +23,17 @@ public class Ejercicio2 {
 			Process p=null;
 			p=rt.exec(comando);
 			InputStream is= p.getInputStream();
-			try(BufferedReader br= new BufferedReader(new InputStreamReader(is));){
+			try(BufferedReader br= new BufferedReader(new InputStreamReader(is));
+					BufferedWriter bw= new BufferedWriter(new FileWriter("listado.txt"))){
 				
 				String linea;
 				linea= br.readLine();
 				while(linea!=null) {
-					System.out.println(linea);
+					bw.write(linea);
 					linea=br.readLine();
 				}
 				
-				
+				System.out.println("Terminado");
 				
 				
 				
@@ -47,5 +48,4 @@ public class Ejercicio2 {
 			// TODO: handle exception
 		}
 	}
-
 }
