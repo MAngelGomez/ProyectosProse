@@ -26,31 +26,6 @@ public class ManagerCalculadora1 {
 		this.apiKey = apiKey;
 		this.registrada = registrada;
 	}
-
-	public String getProtocoloWeb() {
-		return protocoloWeb;
-	}
-	public void setProtocoloWeb(String protocoloWeb) {
-		this.protocoloWeb = protocoloWeb;
-	}
-	public String getUrlOperacion() {
-		return urlOperacion;
-	}
-	public void setUrlOperacion(String urlOperacion) {
-		this.urlOperacion = urlOperacion;
-	}
-	public Integer getApiKey() {
-		return apiKey;
-	}
-	public void setApiKey(Integer apiKey) {
-		this.apiKey = apiKey;
-	}
-	public boolean isRegistrada() {
-		return registrada;
-	}
-	public void setRegistrada(boolean registrada) {
-		this.registrada = registrada;
-	}
 	
 	public void sumar(int a, int b) {
 		try {
@@ -79,14 +54,6 @@ public class ManagerCalculadora1 {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public void restar(int a, int b) {
 		try {
