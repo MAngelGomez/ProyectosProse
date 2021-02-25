@@ -4,126 +4,117 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
 public class ManagerCalculadora {
-	private String protocolo;
-	private String urlEndPoint;
+
+	private String protocoloWeb;
+	private String urlOperacion;
 	private Integer apiKey;
-	private boolean estaRegistrada;
-
-	// Constructor
-	public ManagerCalculadora(String protocolo, String url, Integer apiKey, boolean estaRegistrada) {
-		super();
-		this.protocolo = protocolo;
-		this.urlEndPoint = url;
-		this.apiKey = apiKey;
-		this.estaRegistrada = estaRegistrada;
-	}
-
-	// Por defecto
+	private boolean registrada;
+	
+	
 	public ManagerCalculadora() {
 		super();
 	}
-
-	// Getters y setters
-	public String getProtocolo() {
-		return protocolo;
-	}
-
-	public void setProtocolo(String protocolo) {
-		this.protocolo = protocolo;
-	}
-
-	public String getUrlEndPoint() {
-		return urlEndPoint;
-	}
-
-	public void setUrlEndPoint(String urlEndPoint) {
-		this.urlEndPoint = urlEndPoint;
-	}
-
-	public Integer getApiKey() {
-		return apiKey;
-	}
-
-	public void setApiKey(Integer apiKey) {
+	
+	public ManagerCalculadora(String protocoloWeb, String urlOperacion, Integer apiKey, boolean registrada) {
+		super();
+		this.protocoloWeb = protocoloWeb;
+		this.urlOperacion = urlOperacion;
 		this.apiKey = apiKey;
+		this.registrada = registrada;
 	}
-
-	public boolean isEstaRegistrada() {
-		return estaRegistrada;
-	}
-
-	public void setEstaRegistrada(boolean estaRegistrada) {
-		this.estaRegistrada = estaRegistrada;
-	}
-
-	public void sumar(int a, int b){ // a + b
+	
+	public void sumar(int a, int b) {
 		try {
-			protocolo = "https://psp2021site.000webhostapp.com/";
-			urlEndPoint = "realizaOperacion.php";
-			apiKey = 112;
-			URL url = new URL(protocolo + urlEndPoint + "?API_KEY=" + apiKey + "&TIPO_OPERACION=SUMA&SUMANDO_A=" + a
-					+ "&SUMANDO_B=" + b);
-			URLConnection urlCon = url.openConnection();
-			BufferedReader in;
-			InputStream inputStream = urlCon.getInputStream();
-			in = new BufferedReader(new InputStreamReader(inputStream));
-			String inputLine;
-			while ((inputLine = in.readLine()) != null)
-				System.out.println(inputLine);
-			in.close();
+			protocoloWeb="https://psp2021site.000webhostapp.com/";
+			apiKey=112;
+			urlOperacion="realizaOperacion.php";
+			
+			URL url= new URL(protocoloWeb+urlOperacion+"?API_KEY="+apiKey+"&TIPO_OPERACION=SUMA&SUMANDO_A=" +a+ "&SUMANDO_B=" + b);
+			URLConnection conexion=url.openConnection();
+			
+			
+			InputStream is=conexion.getInputStream();
+			BufferedReader br=new BufferedReader(new InputStreamReader(is));
+			
+			String linea;
+			while((linea=br.readLine())!=null) {
+				System.out.println(linea.replaceAll("\\<[^>]*>", ""));
+			}
+			br.close();
+			
 		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-
+	
 	public void restar(int a, int b) {
 		try {
-			protocolo = "https://psp2021site.000webhostapp.com/";
-			urlEndPoint = "realizaOperacion.php";
-			apiKey = 101;
-			URL url = new URL(protocolo + urlEndPoint + "?API_KEY=" + apiKey + "&TIPO_OPERACION=RESTA&MINUENDO=" + a
-					+ "&SUSTRAENDO=" + b);
-			URLConnection urlCon = url.openConnection();
-			BufferedReader in;
-			InputStream inputStream = urlCon.getInputStream();
-			in = new BufferedReader(new InputStreamReader(inputStream));
-			String inputLine;
-			while ((inputLine = in.readLine()) != null)
-				System.out.println(inputLine);
-			in.close();
+			
+			protocoloWeb="https://psp2021site.000webhostapp.com/";
+			apiKey=112;
+			urlOperacion="realizaOperacion.php";
+			
+			URL url= new URL(protocoloWeb+urlOperacion);
+			URLConnection conexion=url.openConnection();
+			
+			String valores="?API_KEY="+apiKey+"\"&TIPO_OPERACION=RESTA&MINUENDO=\"" +a+ "&SUSTRAENDO=" + b;
+			
+			PrintWriter output=new PrintWriter(conexion.getOutputStream());
+			
+			output.write(valores);
+			output.close();
+			
+			BufferedReader br=new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+			
+			String linea;
+			while((linea=br.readLine())!=null) {
+				System.out.println(linea.replaceAll("\\<[^>]*>", ""));
+			}
+			br.close();
+			
 		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 	public void multiplicar(int a, int b) {
 		try {
-			protocolo = "https://psp2021site.000webhostapp.com/";
-			urlEndPoint = "realizaOperacion.php";
-			apiKey = 101;
-			URL url = new URL(protocolo + urlEndPoint + "?API_KEY=" + apiKey + "&TIPO_OPERACION=MULTIPLICACION&OPERADOR_1=" + a
-					+ "&OPERADOR_2=" + b);
-			URLConnection urlCon = url.openConnection();
-			BufferedReader in;
-			InputStream inputStream = urlCon.getInputStream();
-			in = new BufferedReader(new InputStreamReader(inputStream));
-			String inputLine;
-			while ((inputLine = in.readLine()) != null)
-				System.out.println(inputLine);
-			in.close();
+					
+			protocoloWeb="https://psp2021site.000webhostapp.com/";
+			apiKey=112;
+			urlOperacion="realizaOperacion.php";
+			
+			URL url= new URL(protocoloWeb+urlOperacion+"?API_KEY="+apiKey+"&TIPO_OPERACION=MULTIPLICACION&OPERADOR_1=" +a+ "&OPERADOR_2=" + b);
+			URLConnection conexion=url.openConnection();
+			
+			
+			InputStream is=conexion.getInputStream();
+			BufferedReader br=new BufferedReader(new InputStreamReader(is));
+			
+			String linea;
+			while((linea=br.readLine())!=null) {
+				System.out.println(linea.replaceAll("\\<[^>]*>", ""));
+			}
+			br.close();
+			
 		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
